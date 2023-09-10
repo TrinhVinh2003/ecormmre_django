@@ -1,0 +1,36 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block content %}
+    <section class="section section-slider">
+        <img src="{% static 'images/hero4.png' %}" alt="">
+    </section>
+    <section id="product1" class ="section-p1" >
+        <div class="container">
+            <div class="wrapper-collection-2">
+                <h2>Ưu đãi hiện tại</h2>
+                <p>Summer Collection new Morden Design</p>
+            <div class="pro-container ">
+                {% for item in item %}
+                    <div class="pro ">
+                        <a href="{% url 'item:detail' item.id %}">
+                            <img src="{{ item.image.url }}" alt="">
+                            <div class="des">
+                                <span>{{item.category.name }}</span>
+                                <h5>{{ item.name }}</h5>
+                               
+                                <h4>75$</h4>
+                            </div>
+                        </a>
+                        <form action="{% url 'account:add_to_cart' %}">
+                            <input type="hidden" name="prod_id" value="{{item.id}}">
+                            <button class="normal btn btn-primary"><i class="fa fa-shopping-cart cart"></i></button>
+                        </form>
+                    </div>
+                {% endfor   %}
+                
+            
+            </div>
+            </div>
+        </div>
+        </section>
+{% endblock %}

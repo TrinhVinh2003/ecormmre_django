@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<main class>
+    <div class="layout-info-account">
+        <div class="title-infor-account text-center"><h1>Tài Khoản của tôi</h1></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 sidebar-account">
+                    <div class="AccountSidebar">
+                        <h3>Tài khoản</h3>
+                        <div class="AccountContent">
+                            <div class="AccountList">
+                                <ul class="list-unstyled">
+                                    <li><a href="">Thông tin tài khoản</a></li>
+                                    <li><a href="">Danh sách địa chỉ</a></li>
+                                    <li><a href="{% url 'account:logout' %}">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="col-xs-12 col-sm-9">
+                    <div class="row">
+                        <div class="col-xs-12" id="customer_sidebar">
+                            <p class="title-detail"><strong>Thông tin tài khoản</strong></p>
+                            <h2 class="name_account">TrinhVinh</h2>
+                            <p class="email">trinhquangvinh_t66@hus.edu.vn</p>
+                            <div class="address">
+                                <!-- nhập  -->
+                                <a href="">Xem địa chỉ</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" id="customer_orders" style=" margin-bottom: 30px;
+                        margin-top: 30px;">
+                            <div class="customer-table-wrap " style=" background: #f2f5fa;
+                            padding: 10px;">
+                                
+                                <div class="table-responsive">
+                                    <p class="title-detail"><strong>Danh sách đơn hàng mới nhất</strong>  </p>
+                                    <div class="customer_order customer-table-bg">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="order_number text-center">Mã đơn hàng</th>
+                                                    <th class="date text-center">Ngày đặt</th>
+                                                    <th class="total text-right">Thành tiền</th>
+                                                    <th class="payment_status text-center">Trạng thái thanh toán</th>
+                                                    <th class="fulfillment_status text-center">Vận chuyển</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd cancelled_order">
+                                                    <td class="text-center"><a href="">HO362298</a></td>
+                                                    <td class="text-center"><span>16/08/2023</span></td>
+                                                    <td class="text-center"><span class="total money">2,900,000₫</span></td>
+                                                    <td class="text-center"><span class="status_pending">pending</span></td>
+                                                    <td class="text-center"><span class="status_not fulfilled">not fulfilled</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+              
+                </div>
+                </div>
+                </div>
+                </div>
+           
+            
+   
+</main>
+{% endblock %}

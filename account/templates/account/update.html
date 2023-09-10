@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<main class="">
+    <div class="layout-info-account account-order">
+        <div class="title-infor-account text-center"><H1>Thông tin địa chỉ</H1></div>
+        <div class="container">
+        
+                    <div class="row">
+                       
+                        
+                    
+                        
+                        <div id="add_address" class="customer_address edit_address" >
+                            <form action="" method="post">
+                                {% csrf_token %}    
+                                {% for fm in form %}
+                                    {{ fm.label_tag}}<br>{{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+                                {% endfor %}
+                                <div class="action_bottom">
+                                    <button  class="btn btn-primary" type="submit" >Update</button>
+                                    <a href="{% url 'account:address' %}" type="button" class="btn btn-danger">Back</a>
+                                </div>
+                            </form>  
+                            {% if form.non_field_errors %}
+                                {% for error in form.non_field_errors %}
+                                    <p class="alert alert-danger my-3">{{error}}</p>
+                                {% endfor %}
+                            {% endif %}
+                            {% if messages %}
+                                {% for msg in messages %}
+                                    <div class="alert alert-{{msg.tags}}" role="alert">
+                                        {{msg}}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

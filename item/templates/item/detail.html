@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+<section id="prodetails" class="section-p1">
+    <div class="single-pro-img">
+        <img src="{{ item.image.url }}" width="100%" id="MainImg" alt="">
+    
+        </div>
+        
+    </div>
+    <div class="single-pro-details">
+        <h6>Home / {{item.name}}</h6>
+        <h4>{{item.name}}</h4>
+        <h2>{{item.price}}</h2>
+        <select name="" id="">
+            <option value="">Selectsize</option>
+            <option value="">XL</option>
+            <option value="">XXL</option>
+            <option value="">Small</option>
+            <option value="">Large</option>
+            <option value="">Select size</option>
+        </select>
+        
+        <form action="{% url 'account:add_to_cart' %}">
+            <input type="hidden" name="prod_id" value="{{item.id}}">
+            <button class="normal btn btn-primary">Add to cart</button>
+        </form>
+       
+        <h4>Product details</h4>
+        {% if item.description %}
+        <span>{{item.description}}
+            </span>
+        {% endif %}
+    </div>
+</section>
+
+<section id="product1" class ="section-p1" >
+    <h2>Feature products</h2>
+    <p>Summer Collection new Morden Design</p>
+    <div class="pro-container">
+        {% for item in related_item %}
+        <div class="pro">
+            <a href="{% url 'item:detail' item.id %}">
+                <img src="{{ item.image.url }}" alt="">
+                <div class="des">
+                    <span>{{item.category}}</span>
+                    <h5>{{ item.name }}</h5>
+                
+                    <h4>{{item.price}}</h4>
+                </div>
+            </a>
+            <form action="{% url 'account:add_to_cart' %}">
+                <input type="hidden" name="prod_id" value="{{item.id}}">
+                <button class="normal"><i class="fa fa-shopping-cart cart"></i></button>
+            </form>
+           
+            {% endfor %}
+        </div>
+
+        </div>
+    </section>  
+
+{% endblock %}

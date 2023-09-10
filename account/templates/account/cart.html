@@ -1,0 +1,111 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<main class="">
+    <div id="layout-cart">
+        <div class="breadcrumb-shop">
+            <div class="container11">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5 " itemprop itemtype="http://schema.org/BreadcrumbList">
+                        <ol class="breadcrumb breadcrumb-arrows" itemprop="itemListElement">
+                            <li itemprop itemtype="http://schema.org/ListItem"><a href="" target="_self" itemprop="item" ><span itemprop="name">Trang Chu</span></a></li>
+                            <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><span itemprop="item" content=""><span itemprop="name">Giỏ hàng (1)</span></span></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container11">
+            <div class="row layout-cart">
+                <div class="col-md-12 col-xs-12">
+                    <div class="row">
+                        <div  class="col-md-9 col-xs-12">
+                            <h1 class="heading-cart">
+                                Giỏ hàng của bạn
+                            </h1>
+                            {% if cart %}
+                            <div class="list-pageform-cart">
+                                <div class="cart-row cart-container1">
+                                    <form action="" method="post" id="cartformpage">
+                                        <div class="table-cart">
+                                            {% for item in cart %}
+                                            <div class="item line-item line-item-container1" data-variant-id="1110367316">
+                                                <div class="left">
+                                                    <div class="item-img"><img src="{{ item.product.image.url }}" alt=""></div>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="item-infor">
+                                                        <a href=""><h3>{{item.product.name}}</h3></a>
+                                                    </div>
+                                                    <div class="item-quan">
+                                                        <div class="qty quantity-partent qty-click clearfix">
+                                                            <a href="" class="minus-cart btn" pid={{item.product.id}}><i class="far fa-minus-square fa-lg"></i></a>
+                                                            <span id= "quantity"> {{ item.quantity }} </span>
+                                                            <a href="" class="plus-cart btn" pid={{item.product.id}}><i class="far fa-plus-square fa-lg"></i></a>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-price"><span>{{ item.product.price }}</span></div>
+                                                    <div class="item-total-price">
+                                                        <div class="price">
+                                                            <span class="text">Thành tiền:</span>
+                                                            <span class="line-item-total" id="totalamount">
+                                                                {{item.product.price}}
+                                                                    </span>
+
+                                                        </div>
+                                                        <div ><a class="remove btn btn-sm" pid ="{{item.product.id}}" class="cart">
+                                                            <img src="//theme.hstatic.net/1000312510/1000814191/14/ic_close.png?v=1034" alt="">
+                                                        </a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="cart-row">
+                                            <div class="row note-block">
+                                                <div class="col-md-5 col-xs-12 cart-left-block">
+                                                    <div class="checkout-buttons ">
+                                                        <label for="note" class="note-label">Ghi chú đơn hàng</label>
+                                                        <textarea class="form-control" id="note" name="note" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7 col-xs-12 cart-right-block">
+                                                    <div class="policy_return"><h4>Lưu ý:</h4>
+                                                        <ul>
+                                                            <li>Ngay tại thời điểm nhận hàng, Quý khách vui lòng mở niêm phong kiện hàng, kiểm tra sơ bộ ngoại quan sản phẩm (không xé niêm phong/mở bao bì sản phẩm và sử dụng thử) và ký xác nhận. </li>
+                                                            <li>Sản phẩm nguyên giá được đổi trong 3 ngày với đơn hàng ở HCM và 5-7 với đơn hàng ở tỉnh </li>
+                                                        </ul>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            {% else %}
+                                <h1>cart is empty</h1>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-3 col-xs-12 sidebar-cart-fix">
+                            <a href="/" class="continue">Tiếp tục mua hàng →</a>
+                            <div class="order-summary-block">
+                                <h2 class="order-summary-title">Thông tin đơn hàng</h2>
+                                <div class="summary-total" id="amount">
+                                    <p >Tổng tiền: <span>{{amount}}</span>  </p>
+                                </div>
+                                <div class="summary-action"><p>Bạn có thể nhập mã giảm giá ở trang thanh toán</p>
+                                    <a class="checkout-btn" href="#">THANH TOÁN</a></div>
+                                
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

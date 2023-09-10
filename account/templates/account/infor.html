@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<main class="">
+    <div class="layout-info-account account-order">
+        <div class="title-infor-account text-center"><H1>Thông tin địa chỉ</H1></div>
+        <div class="container my-5  ">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 sidebar-account">
+                    <div class="AccountSidebar">
+                        <h3>Tài khoản</h3>
+                        <div class="AccountContent">
+                            <div class="AccountList">
+                                <ul class="list-unstyled">
+                                    <li class="current"><a href="">Thông tin tài khoản</a></li>
+                                    <li><a href="">Danh sách địa chỉ</a></li>
+                                    <li class="last"><a href="{% url 'account:logout' %}">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="col-xs-12 col-sm-8 ">
+                    <div class="row">
+                       
+                           
+                            {% for add in adds %}
+                            <div class="col-sm-6">
+                                <div class="card m-2">
+                                    <div class="card-body">
+                                        <h2>Address {{forloop.counter }}</h3>
+                                        <p >Name: {{add.name}}</p>
+                                        <p>Company: {{add.company}}</p>
+                                        <p>Locality: {{add.locality}}</p>
+                                        <p>Mobile : {{add.mobile}}</p>
+                                        <p>City: {{add.city}}</p>
+                                        <p class="text-center position-absolute" ><a href="{% url 'account:updateAddress' add.id %}" type="button" class="btn btn-success">Update</a></p>
+                                        <p class="text-end"><a href="{% url 'account:delete' add.id %}" type="button" class="btn btn-danger">Delete</a></p>
+                                    </div>  
+                                </div>
+                            </div> 
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+</main>
+{% endblock %}

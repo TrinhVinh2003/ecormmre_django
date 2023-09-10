@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<main class>
+    <div class="layout-account">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xs-12 wrapbox-heading-account">
+                    <div class="header-page clearfix"> 
+                        <h1>Đăng nhập</h1>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12 wrapbox-content-account">
+                    <div id="customer-login">
+                        <div class="userbox" id="login">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="clearfix large_form">
+                                    <input type="text" name="username" id="customer-email" placeholder="Email" class="text">
+                                </div>
+                                <div class="clearfix large_form">
+                                    <input type="password" name= "password" id="customer-password" placeholder="password" class="text" size="16" name="customer[password]">
+                                </div>
+                                <div class="clearfix action_account_custommer">
+                                    <div class="action_bottom button dark">
+                                        <input type="submit" class="btn btn-signin" value="Đăng nhập">
+                                    </div>
+                                    <div class="req_pass">
+                                        <a href="">Quên mật khẩu?</a><br>
+                                        hoac <a href="{% url 'core:signup'%}" title="dang ky">Đăng ký</a>
+                                    </div>
+                                </div>
+                            </form>
+                            {% if messages %}
+                                    {% for msg in messages %}
+                                    <div class="bg-red-200 ">
+                                        {{ msg }}
+                                    </div>
+                                    {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

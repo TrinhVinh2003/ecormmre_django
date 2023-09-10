@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<main class>
+    <div class="layout-account">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xs-12 wrapbox-heading-account">
+                    <div class="header-page clearfix"> 
+                        <h1>Tạo tài khoản</h1>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12 wrapbox-content-account">
+                    <div id="customer-login">
+                        <div class="userbox" >
+                            <form action="" id="create_customer" method="post">
+                                {% csrf_token %}
+                                <div class="clearfix large_form" id="last-name">
+                                    <input type="text" name="username" placeholder="username" id="username" class="text" size="30">
+                                </div>
+                                
+                                <div class="clearfix large_form" id="gender">
+                                    <input type="radio" id="radio1" name="customer[gender]" value="0">
+                                    <label for="radio1">Nữ</label>
+                                    <input type="radio" id="radio2" name="customer[gender]" value="1">
+                                    <label for="radio2">Nam</label>
+                                </div>
+                                <div class="clearfix large_form" id="email">
+                                    <input required type="email" value placeholder="Email" name="email" id="email" class="text" size="30">
+                                </div>
+                                <div class="clearfix large_form" id="password">
+                                    <input required type="password" value placeholder="Mật khẩu" name="password1" id="password1" class="password text" size="30">
+                                </div>
+                               
+                                <div class="clearfix large_form" id="password">
+                                    <input required type="password" value placeholder="Mật khẩu" name="password2" id="password2" class="password text" size="30">
+                                </div>
+                                <div class="clearfix action_account_custommer">
+                                    <div class="action_bottom button dark">
+                                        <input class="btn" type="submit" value="Đăng ký">
+                                    </div>
+                                   
+                                </div>
+                                <div class="clearfix req_pass">
+                                    <a class="come-back" href=""><i class="fa fa-long-arrow-left"></i> Quay lại trang chủ</a>
+                                </div>
+                                {% if messages %}
+                                    {% for msg in messages %}
+                                    <div class="bg-red-200 ">
+                                        {{ msg }}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock%}
